@@ -1,9 +1,10 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const restaurantList = require('./restaurant.json')
+// const restaurantList = require('./restaurant.json')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const Restaurant = require('./models/restaurant')
 
 //set up handlebars
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
@@ -17,11 +18,11 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 
 //set DB connection status
 const db = mongoose.connection
-//DB connect fail
+//connect fail
 db.on('error', () => {
   console.log('mongodb error!')
 })
-//DB connect success
+//connect success
 db.once('open', () => {
   console.log('mongodb connected!')
 })
@@ -30,8 +31,10 @@ app.use(express.static('public'))
 
 //view all restaurants
 app.get('/', (req, res) => {
-  const restaurants = restaurantList.results
-  res.render('index', { restaurants: restaurants })
+  Restaurant.find()
+  .lean()
+  .then(restaurants => res.render('index', {restaurants}))
+  .catch(err => console.log(err))
 })
 
 //view one restaurant
@@ -45,11 +48,18 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 //view search items
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const restaurants = restaurantList.results.filter((item) => {
-    return item.name.toLowerCase().includes(req.query.keyword.toLowerCase()) ||
-      item.category.toLowerCase().includes(req.query.keyword.toLowerCase())
-  })
-  res.render('index', { restaurants: restaurants, keyword: keyword })
+  Restaurant.find()
+  .lean()
+  .then( data => data)
+  .then( data => {
+    const restaurants = data.filter((item) => {
+      return item.name.toLowerCase().includes(req.query.keyword.toLowerCase()) ||
+        item.category.toLowerCase().includes(req.query.keyword.toLowerCase())
+    })
+    res.render('index', { restaurants: restaurants, keyword: keyword })
+  }    
+  )
+  .catch(err => console.log(err))
 })
 
 //set listen port
