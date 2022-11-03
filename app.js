@@ -4,6 +4,7 @@ const port = 3000
 // const restaurantList = require('./restaurant.json')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const restaurant = require('./models/restaurant')
 const Restaurant = require('./models/restaurant')
 
 //set up handlebars
@@ -39,10 +40,11 @@ app.get('/', (req, res) => {
 
 //view one restaurant
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find((item) => {
-    return item.id.toString() === req.params.restaurant_id
-  })
-  res.render('show', { restaurant: restaurant })
+  const id = req.params.restaurant_id
+  Restaurant.findById(id)
+  .lean()
+  .then(restaurant => res.render('show', { restaurant })) 
+  .catch(err => console.log(err))  
 })
 
 //view search items
