@@ -96,6 +96,13 @@ app.post('/restaurants/:restaurant_id/edit', (req, res) => {
     .catch(err => console.log(err))
 })
 //delete item
+app.post('/restaurants/:restaurant_id/delete', (req, res) => {
+  const id = req.params.restaurant_id
+  Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
 
 //view one restaurant
 app.get('/restaurants/:restaurant_id', (req, res) => {
