@@ -1,0 +1,45 @@
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+          width="30" height="30" class="d-inline-block align-top" alt="好。吃">
+        我的餐廳清單
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="row ">
+    <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+      <div class="row justify-content-md-center">
+        <div class="mb-3 col-6">
+          <p class="mt-2">此表單每個欄位皆為必填, 若無資料則輸入空格</p>
+          <label for="name" class="form-label mt-1">餐廳名稱</label>
+          <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{restaurant.name}}">
+          <label for="name_en" class="form-label mt-2">餐廳名稱(英文)</label>
+          <input type="text" class="form-control" id="name_en" placeholder="" name="name_en" value="{{restaurant.name_en}}">
+          <label for="category" class="form-label mt-2">類別</label>
+          <input type="text" class="form-control" id="category" placeholder="" name="category" value="{{restaurant.category}}">
+          <label for="image" class="form-label mt-2">圖片網址</label>
+          <input type="text" class="form-control" id="image" placeholder="" name="image" value="{{restaurant.image}}">
+          <label for="location" class="form-label mt-2">地址</label>
+          <input type="text" class="form-control mt-2" id="location" placeholder="" name="location" value="{{restaurant.location}}">
+          <label for="phone" class="form-label mt-2">phone</label>
+          <input type="text" class="form-control" id="phone" placeholder="" name="phone" value="{{restaurant.phone}}">
+          <label for="google_map" class="form-label mt-2">Google Map網址</label>
+          <input type="text" class="form-control" id="google_map" placeholder="" name="google_map" value="{{restaurant.google_map}}">
+          <label for="rating" class="form-label mt-2">評分</label>
+          <input type="text" class="form-control" id="rating" placeholder="請填數字0-5之間" name="rating" value="{{restaurant.rating}}">
+          <label for="description" class="form-label mt-2">描述</label>
+          <textarea class="form-control" id="description" rows="3" name="description">{{restaurant.description}}</textarea>
+        </div>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

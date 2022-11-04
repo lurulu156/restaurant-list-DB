@@ -45,8 +45,6 @@ app.get('/', (req, res) => {
 app.get('/restaurants/new', (req, res) => {
   return res.render('new')
 })
-
-//create new item - POST
 app.post('/restaurants', (req, res) => {
   const name = req.body.name
   const name_en = req.body.name_en
@@ -58,10 +56,46 @@ app.post('/restaurants', (req, res) => {
   const rating = req.body.rating
   const description = req.body.description
   return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description })
-  .then( ()=> res.redirect('/'))
-  .catch(err => console.log(err))
-
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
 })
+
+//edit specific item
+app.get('/restaurants/:restaurant_id/edit', (req, res) => {
+  const id = req.params.restaurant_id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(err => console.log(err))
+})
+app.post('/restaurants/:restaurant_id/edit', (req, res) => {
+  const id = req.params.restaurant_id
+  const name = req.body.name
+  const name_en = req.body.name_en
+  const category = req.body.category
+  const image = req.body.image
+  const location = req.body.location
+  const phone = req.body.phone
+  const google_map = req.body.google_map
+  const rating = req.body.rating
+  const description = req.body.description
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = name
+      restaurant.name_en = name_en
+      restaurant.category = category
+      restaurant.image = image
+      restaurant.location = location
+      restaurant.phone = phone
+      restaurant.google_map = google_map
+      restaurant.rating = rating
+      restaurant.description = description
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(err => console.log(err))
+})
+//delete item
 
 //view one restaurant
 app.get('/restaurants/:restaurant_id', (req, res) => {
