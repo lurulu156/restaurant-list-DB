@@ -1,10 +1,8 @@
 const express = require('express')
 const app = express()
 const port = 3000
-// const restaurantList = require('./restaurant.json')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-const restaurant = require('./models/restaurant')
 const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
 
@@ -22,11 +20,9 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 
 //set DB connection status
 const db = mongoose.connection
-//connect fail
 db.on('error', () => {
   console.log('mongodb error!')
 })
-//connect success
 db.once('open', () => {
   console.log('mongodb connected!')
 })
@@ -95,6 +91,7 @@ app.post('/restaurants/:restaurant_id/edit', (req, res) => {
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(err => console.log(err))
 })
+
 //delete item
 app.post('/restaurants/:restaurant_id/delete', (req, res) => {
   const id = req.params.restaurant_id
@@ -129,8 +126,6 @@ app.get('/search', (req, res) => {
     )
     .catch(err => console.log(err))
 })
-
-
 
 //set listen port
 app.listen(port, () => {

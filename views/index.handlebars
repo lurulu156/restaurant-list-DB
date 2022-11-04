@@ -57,11 +57,13 @@
             </div>
           </div>
         </a>
+        {{!-- edit icon --}}
         <a href="/restaurants/{{this._id}}/edit"
           style="width: 2.5%; height: 4%; display:inline-block; margin-left:-4%; z-index: 1;"
           class="badge rounded-circle text-bg-light mb-5">
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </a>
+        {{!-- delete icon --}}
         <form action="/restaurants/{{this._id}}/delete" method="POST"
           style="width: 2.5%; height: 10%; display:inline-block; margin-left:-2%; z-index: 1;">
           <button type="submit" class="badge rounded-circle text-bg-light mt-4 border border-white"
