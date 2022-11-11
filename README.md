@@ -2,22 +2,26 @@
 A simple web application for restaurant list
 
 ## Features
+#### Main page
 - listing restaurants from seeds in MongoDB
-- show the restaurant detailed info by clicking it
-- searching restaurants by title or category
-- add restaurant by clicking the up-right button in main page
-- update the restaurant info by clicking the up-center button in the restaurant page or the pencil button beside the picture in main page
-- delete the restaurant by clicking the up-right button in the restaurant page or the trash button beside the picture in main page
+- search restaurants by title or category
+- show the restaurant detailed info by clicking the info button beneath the picture
+- add a new restaurant by clicking the up-right button
+- update the restaurant info by clicking the pencil button beneath the picture in main page
+- delete the restaurant by clicking the trash button beneath the picture in main page
+#### Restaurant page
+- update the restaurant info by clicking button on the top center of page
+- delete the restaurant by clicking the button on the top right of page
 
 ## How to install
-1. Install node.js and npm
+1. Install node.js
 2. Clone this project to local
 3. After opening the file in local, go to the folder by terminal and then input
 ```bash
   npm install
 ```
 4. After the installation, prepare your own MongoDB link: MONGODB_URI
-5. After the installation, input:
+5. After the updating the DB link, input:
 ```bash
   npm run start
 ```
@@ -36,4 +40,5 @@ A simple web application for restaurant list
 - Node.js @16.18.0
 - Bootstrap @5.2.2
 - Font-awesome @6.2.0
+- Mongoose @5.9.7
 
