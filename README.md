@@ -2,9 +2,12 @@
 A simple web application for restaurant list
 
 ## Features
-- listing restaurants from json file
+- listing restaurants from seeds in MongoDB
 - show the restaurant detailed info by clicking it
 - searching restaurants by title or category
+- add restaurant by clicking the up-right button in main page
+- update the restaurant info by clicking the up-center button in the restaurant page or the pencil button beside the picture in main page
+- delete the restaurant by clicking the up-right button in the restaurant page or the trash button beside the picture in main page
 
 ## How to install
 1. Install node.js and npm
@@ -13,15 +16,16 @@ A simple web application for restaurant list
 ```bash
   npm install
 ```
-4. After the installation, input:
+4. After the installation, prepare your own MongoDB link: MONGODB_URI
+5. After the installation, input:
 ```bash
   npm run start
 ```
-5. If you see below message, it means it's running successfully. And just type the URL into the browser.
+6. If you see below message, it means it's running successfully. And just type the URL into the browser.
 ```bash
   Express is listening on http://localhost:3000
 ```
-6. Exist it by :
+7. Exist it by :
 ```bash
    ctrl + c
 ```
