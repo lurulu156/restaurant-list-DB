@@ -86,13 +86,12 @@
                 <form action="/restaurants/{{this._id}}/delete" method="POST" style="display:inline-block;"
                   class="d-flex align-items-center">
                   <button type="submit" class="badge rounded-circle text-bg-light border border-white"
-                    style="display:inline-block;margin-left:-18px;width: 2rem; height: 2rem;"><i
+                    style="display:inline-block;margin-left:-18px;width: 2rem; height: 2rem;" onclick="return confirm('確定要刪除嗎?');"><i
                       class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
                 </form>
               </span>
             </div>
           </div>
-
         </div>
 
 

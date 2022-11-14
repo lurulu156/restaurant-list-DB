@@ -31,12 +31,12 @@ app.use(express.static('public'))
 
 //view all restaurants with sorting function
 app.get('/', (req, res) => {
-  const sort = req.query.sort ? req.query.sort : {_id: 'asc'}
+  const sort = req.query.sort ? req.query.sort : { _id: 'asc' }
   const sortMapping = {
     'AtoZ': { name: 'asc' },
     'ZtoA': { name: 'desc' },
     'category': { category: 'asc' },
-    'location': { category: 'asc' }
+    'location': { location: 'asc' }
   }
   Restaurant.find()
     .lean()
@@ -102,11 +102,11 @@ app.post('/restaurants/:restaurant_id/edit', (req, res) => {
 
 //delete item
 app.post('/restaurants/:restaurant_id/delete', (req, res) => {
-  const id = req.params.restaurant_id
-  Restaurant.findById(id)
-    .then(restaurant => restaurant.remove())
-    .then(() => res.redirect('/'))
-    .catch(err => console.log(err))
+    const id = req.params.restaurant_id
+    Restaurant.findById(id)
+      .then(restaurant => restaurant.remove())
+      .then(() => res.redirect('/'))
+      .catch(err => console.log(err))
 })
 
 //view one restaurant

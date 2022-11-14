@@ -12,7 +12,7 @@
         修改餐廳
       </a>
       <form action="/restaurants/{{restaurant._id}}/delete" method="POST">
-        <button type="submit" class="navbar-brand border border-light" style="background-color: #F8F9FA;">
+        <button type="submit" class="navbar-brand border border-light" style="background-color: #F8F9FA;" onclick="return confirm('確定要刪除嗎?');">
           <i class="fa fa-trash" aria-hidden="true"></i>
           刪除餐廳
         </button>
