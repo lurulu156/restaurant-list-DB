@@ -21,15 +21,20 @@ A simple web application for restaurant list
   npm install
 ```
 4. After the installation, prepare your own MongoDB link: MONGODB_URI
-5. After the updating the DB link, input:
+5. If you already have a list, you could generate the seeds by inputting:
+```bash
+  npm run seed
+```
+or  you could just directly run the app by inputting:
 ```bash
   npm run start
 ```
-6. If you see below message, it means it's running successfully. And just type the URL into the browser.
+
+7. If you see below message, it means it's running successfully. And just type the URL into the browser.
 ```bash
   Express is listening on http://localhost:3000
 ```
-7. Exist it by :
+8. Exist it by :
 ```bash
    ctrl + c
 ```
