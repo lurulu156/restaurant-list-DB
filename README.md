@@ -1,5 +1,6 @@
 # Restaurant List
 A simple web application for restaurant list
+![image](./public/snapshot_restaurant_list_DB.JPG)
 
 ## Features
 #### Main page
