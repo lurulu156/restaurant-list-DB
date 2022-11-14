@@ -18,31 +18,45 @@
   <div class="banner"></div>
 </header>
 
-<!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+<div class="container d-flex justify-content-between" style="width: 60rem;">
+  <!-- search bar -->
+  <div class="search-bar">
+    <div class="search-bar-outer">
+      <div class="search-bar-inner">
+        <form action="/search">
+          <h4 class="mb-2">尋找餐廳：</h4>
+          <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+              value="{{keyword}}" aria-describedby="search-button">
+            <div class="input-group-append">
+              <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
+  </div>
+  {{!-- sorting button --}}
+  <div class="dropdown pe-0" >
+    <button class="btn btn-outline-secondary dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Sort
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">A -> Z</a></li>
+      <li><a class="dropdown-item" href="#">Z -> A</a></li>
+      <li><a class="dropdown-item" href="#">類別</a></li>
+      <li><a class="dropdown-item" href="#">地區</a></li>
+    </ul>
   </div>
 </div>
 
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
-    <div class="col-10 mx-auto">
-      <div class="row row-cols-3">
+    <div class="col-9 mx-auto">
+      <div class="row row-cols-auto">
         {{#each restaurants}}
-        <div class="card mb-3">
+        <div class="card mb-3 ms-4" style="width: 19rem;">
           <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
           <div class="card-body p-3 " style="height: 8rem;">
             <h6 class="card-title mb-1">{{this.name}}</h6>
@@ -50,26 +64,30 @@
               <i class="fas fa-utensils pr-2"></i> {{this.category}}
             </div>
             <div class="d-flex justify-content-between">
-              <span class="badge rounded-pill text-bg-danger mt-4" style="width: 4rem; height: 4%; display:inline-block">
+              <span class="badge rounded-pill text-bg-danger mt-4"
+                style="width: 4rem; height: 4%; display:inline-block">
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
-              <span class="mt-0">
+              <span class="mt-0 d-flex align-items-center justify-content-end" style="width: 10rem;height: 5rem;">
                 {{!-- edit icon --}}
-                <a href="/restaurants/{{this._id}}/edit" class="badge rounded-circle text-bg-light" style="width: 1.5rem; height: 1.5rem; display:inline-block">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                <a href="/restaurants/{{this._id}}/edit"
+                  class="badge rounded-circle text-bg-light d-flex align-items-center justify-content-center"
+                  style="width: 2rem; height: 2rem; ">
+                  <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
                 </a>
                 {{!-- info icon --}}
-                <a href="/restaurants/{{this._id}}" style="width: 1.5rem; height: 1.5rem; display:inline-block; margin-right:1.5rem; margin-left:0.5rem"
-                  class="badge rounded-circle text-bg-light mb-5">
-                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                <a href="/restaurants/{{this._id}}"
+                  style="width: 2rem; height: 2rem; display:inline-block; margin-right:1.5rem; margin-left:0.5rem"
+                  class="badge rounded-circle text-bg-light d-flex align-items-center justify-content-center">
+                  <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
                 </a>
                 {{!-- delete icon --}}
-                <form action="/restaurants/{{this._id}}/delete" method="POST"
-                  style="width: 1.5rem; height: 1.5rem; display:inline-block;">
-                  <button type="submit" class="badge rounded-circle text-bg-light mt-4 border border-white"
-                    style="display:inline-block;margin-left:-18px;"><i class="fa fa-trash"
-                      aria-hidden="true"></i></button>
+                <form action="/restaurants/{{this._id}}/delete" method="POST" style="display:inline-block;"
+                  class="d-flex align-items-center">
+                  <button type="submit" class="badge rounded-circle text-bg-light border border-white"
+                    style="display:inline-block;margin-left:-18px;width: 2rem; height: 2rem;"><i
+                      class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
                 </form>
               </span>
             </div>
