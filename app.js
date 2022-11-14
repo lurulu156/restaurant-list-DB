@@ -29,10 +29,18 @@ db.once('open', () => {
 
 app.use(express.static('public'))
 
-//view all restaurants
+//view all restaurants with sorting function
 app.get('/', (req, res) => {
+  const sort = req.query.sort ? req.query.sort : {_id: 'asc'}
+  const sortMapping = {
+    'AtoZ': { name: 'asc' },
+    'ZtoA': { name: 'desc' },
+    'category': { category: 'asc' },
+    'location': { category: 'asc' }
+  }
   Restaurant.find()
     .lean()
+    .sort(sortMapping[sort])
     .then(restaurants => res.render('index', { restaurants }))
     .catch(err => console.log(err))
 })

@@ -37,16 +37,16 @@
     </div>
   </div>
   {{!-- sorting button --}}
-  <div class="dropdown pe-0" >
-    <button class="btn btn-outline-secondary dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Sort
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">A -> Z</a></li>
-      <li><a class="dropdown-item" href="#">Z -> A</a></li>
-      <li><a class="dropdown-item" href="#">類別</a></li>
-      <li><a class="dropdown-item" href="#">地區</a></li>
-    </ul>
+  <div class="input-group mb-3" style="width: 10rem;">
+    <form action="/">
+    <select class="form-select" id="inputGroupSelect01" name="sort" onchange="this.form.submit()">
+      <option selected>Sort</option>
+      <option value="AtoZ">A -> Z</option>
+      <option value="ZtoA">Z -> A</option>
+      <option value="category">類別</option>
+      <option value="location">地區</option>
+    </select>
+    </form>
   </div>
 </div>
 
