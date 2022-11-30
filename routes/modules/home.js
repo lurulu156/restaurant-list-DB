@@ -1,10 +1,11 @@
 // 引用 Express 與 Express 路由器
 const express = require('express')
 const router = express.Router()
-// 引用 Todo model
+// 引用model
 const Restaurant = require('../../models/restaurant')
 // 定義首頁路由
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const sort = req.query.sort ? req.query.sort : { _id: 'asc' }
   const sortMapping = {
     'AtoZ': { name: 'asc' },
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
     'category': { category: 'asc' },
     'location': { location: 'asc' }
   }
-  Restaurant.find()
+  Restaurant.find({ userId })
     .lean()
     .sort(sortMapping[sort])
     .then(restaurants => res.render('index', { restaurants }))
@@ -21,8 +22,9 @@ router.get('/', (req, res) => {
 
 //view search items
 router.get('/search', (req, res) => {
+  const userId = req.user._id
   const keyword = req.query.keyword
-  Restaurant.find()
+  Restaurant.find({ userId })
     .lean()
     .then(data => data)
     .then(data => {

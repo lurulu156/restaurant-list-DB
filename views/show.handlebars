@@ -1,24 +1,4 @@
 <header>
-  <!-- navigation -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
-          width="30" height="30" class="d-inline-block align-top" alt="好。吃">
-        我的餐廳清單
-      </a>
-      <a class="navbar-brand" href="/restaurants/{{restaurant._id}}/edit">
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-        修改餐廳
-      </a>
-      <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="POST">
-        <button type="submit" class="navbar-brand border border-light" style="background-color: #F8F9FA;" onclick="return confirm('確定要刪除嗎?');">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-          刪除餐廳
-        </button>
-      </form>
-    </div>
-  </nav>
   <div class="banner"></div>
 </header>
 
@@ -26,7 +6,19 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
-
+      <div class="d-flex align-items-center mb-3">
+      <a class="navbar-brand"  style="line-height:30px; padding:0.375rem 0.75rem" href="/restaurants/{{restaurant._id}}/edit">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+        修改餐廳
+      </a>
+      <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="POST" class="form-control border border-0">
+        <button type="submit" class="navbar-brand border border-light" style="background-color: #F8F9FA;"
+          onclick="return confirm('確定要刪除嗎?');">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          刪除餐廳
+        </button>
+      </form>
+      </div>
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>

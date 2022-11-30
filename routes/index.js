@@ -6,8 +6,8 @@ const home = require('./modules/home')
 const restaurants = require('./modules/restaurants')
 const users = require('./modules/users')
 // 將網址結構符合 / 字串的 request 導向特定模組
-router.use('/users', users)
 router.use('/restaurants', restaurants)
+router.use('/users', users)
 router.use('/', home)
 // 匯出路由器
 module.exports = router
