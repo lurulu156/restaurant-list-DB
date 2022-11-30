@@ -1,20 +1,4 @@
 <header>
-  <!-- navigation -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
-          width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-        我的餐廳清單
-      </a>
-      <a class="navbar-brand" href="/restaurants/new">
-        <i class="fa fa-plus" aria-hidden="true"></i>
-        新增餐廳
-      </a>
-
-    </div>
-  </nav>
-
   <div class="banner"></div>
 </header>
 
@@ -39,13 +23,13 @@
   {{!-- sorting button --}}
   <div class="mb-2 mt-2" style="width: 10rem;">
     <form action="/">
-    <select class="form-select" id="inputGroupSelect01" name="sort" onchange="this.form.submit()">
-      <option selected>Sort</option>
-      <option value="AtoZ">A -> Z</option>
-      <option value="ZtoA">Z -> A</option>
-      <option value="category">類別</option>
-      <option value="location">地區</option>
-    </select>
+      <select class="form-select" id="inputGroupSelect01" name="sort" onchange="this.form.submit()">
+        <option selected>Sort</option>
+        <option value="AtoZ">A -> Z</option>
+        <option value="ZtoA">Z -> A</option>
+        <option value="category">類別</option>
+        <option value="location">地區</option>
+      </select>
     </form>
   </div>
 </div>
@@ -54,6 +38,10 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-9 mx-auto">
+      <a class="btn btn btn-outline-danger btn-lg ms-4 mb-3 d-flex justify-content-center align-items-center" href="/restaurants/new">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        新增餐廳
+      </a>
       <div class="row row-cols-auto">
         {{#each restaurants}}
         <div class="card mb-3 ms-4" style="width: 19rem;">
@@ -86,8 +74,8 @@
                 <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST" style="display:inline-block;"
                   class="d-flex align-items-center">
                   <button type="submit" class="badge rounded-circle text-bg-light border border-white"
-                    style="display:inline-block;margin-left:-18px;width: 2rem; height: 2rem;" onclick="return confirm('確定要刪除嗎?');"><i
-                      class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
+                    style="display:inline-block;margin-left:-18px;width: 2rem; height: 2rem;"
+                    onclick="return confirm('確定要刪除嗎?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>
                 </form>
               </span>
             </div>
