@@ -4,7 +4,10 @@ A simple web application for restaurant list
 
 ## Features
 #### Main page
-- listing restaurants from seeds in MongoDB
+- user registeration and authentication 
+- login from Facebook
+- listing restaurants with relationship to the user from seeds in MongoDB
+- sorting restaurants by the preference of A to Z or Z to A etc.
 - search restaurants by title or category
 - show the restaurant detailed info by clicking the info button beneath the picture
 - add a new restaurant by clicking the up-right button
