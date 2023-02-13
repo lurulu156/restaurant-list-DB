@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   }
   Restaurant.find({ userId })
     .lean()
-    .sort(sortMapping[sort])
+    .sort(sortMapping[sort] ? sortMapping[sort] : sort)
     .then(restaurants => res.render('index', { restaurants }))
     .catch(err => console.log(err))
 })
